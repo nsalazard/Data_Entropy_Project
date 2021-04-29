@@ -30,8 +30,8 @@ int main(int argc, char **argv) {
   std::vector<double> vals(NTHREADS, 0.0); // store here partial sums
   for (int ii = 0; ii < NTHREADS; ++ii) {
     const int localsize = N/NTHREADS; // how much size for each thread, NTHREADS must be divisor of N
-    const int iimin = ; // FILL HERE minimum global index for this thread
-    const int iimax = ; // FILL HERE maximim global index for this thread
+    const int iimin = ii * localsize; // FILL HERE minimum global index for this thread
+    const int iimax = (ii+1) * localsize; // FILL HERE maximim global index for this thread
     mythreads[ii] = std::thread(&func, values, iimin, iimax, std::ref(vals[ii]));
   }
   for (int ii = 0; ii < NTHREADS; ++ii) {
