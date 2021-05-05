@@ -50,6 +50,7 @@ int main(int argc, char **argv) {
       papi(real_time,proc_time, mflops, flpops,ireal_time,iproc_time, imflops, iflpops, retval, data, N, Var, A,B,C);
       }
     }
+  }
 		/*
     else if (P == 1) { // for (auto & N : data)
       // int data[14] = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096,
@@ -133,4 +134,3 @@ void papi(float real_time, float proc_time, float mflops, long long flpops,float
       printf("%.15e\n", C[0]);
     }
     // End for
-
