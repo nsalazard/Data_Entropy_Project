@@ -54,6 +54,14 @@ int main(int argc, char **argv) {
       iflpops = 0;
       retval = 0;
 
+
+      if (P == 0) {
+        blocksize=Var;
+      }
+      else if (P == 1) {
+        N = Var;
+      }
+
       // Matrix declaration : Modeled as 1D array
       VEC A(N * N);
       VEC B(N * N);
@@ -71,16 +79,7 @@ int main(int argc, char **argv) {
         exit(1);
       }
 
-      if (P == 0) {
-        // Var = blocksize;
-        code_to_be_measured(N, Var, A, B, C);
-      }
-
-      else if (P == 1) {
-        // Var = N;
-        code_to_be_measured(Var, blocksize, A, B, C);
-      }
-      // code_to_be_measured(N,blocksize, A,B,C);
+      code_to_be_measured(N,blocksize, A,B,C);
 
       if ((retval = PAPI_flops_rate(PAPI_FP_OPS, &real_time, &proc_time,
                                     &flpops, &mflops)) < PAPI_OK) {
@@ -124,4 +123,3 @@ int main(int argc, char **argv) {
       data[ii] = ii;
     }
   }
-
