@@ -5,7 +5,7 @@
 CXXFLAGS = -lpapi -larmadillo
 CXXO = -O3
 
-all: datos.txt
+all: mult_2048_O.txt
 
 %.x : %.cpp
 	g++ $< -o $@ $(CXXFLAGS)
@@ -21,16 +21,9 @@ mult_2048.txt : multiplicacion_blocking.x
 %_O.x : %.cpp
 	g++ $(CXXO) $< -o $@ $(CXXFLAGS)
 
-mult_2048.txt : multiplicacion_blocking_0.x
+mult_2048_O.txt : multiplicacion_blocking_0.x
 	./$< > $@ 0 0
 
-
-
-
-
-#Crecaion general de graficas
-%.pdf: %.gp %.txt 
-	gnuplot $<
 	
 clean:
 	rm -f a.out *.x *.txt
