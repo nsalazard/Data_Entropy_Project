@@ -21,17 +21,21 @@ int main(int argc, char **argv)
     int retval;
 // PERFOMANCE MEASURE
     if (P==0){  // Blocksize
-    int data[13] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096};
+    //int data[13] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096};
+	    int data[4] = {1, 2, 4, 8};
     if(Q==0){
-    int N = 2048;
+    if(Q==0){
+    //int N = 2048;
+    int N = 20;
   }
   if(Q==1){
   int N = 4096;
 }
 		}
 		else if (P==1){ // for (auto & N : data)
-			int data[14] = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
-			X = Cache/N;
+			//int data[14] = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
+			int data[2] = {4, 8};
+			int blocksize = 2;
 		}
 		else {
 			std::cout << "Not a valid argument" << std::endl;
@@ -74,7 +78,7 @@ int main(int argc, char **argv)
 
   }
   if(P==1){
-    for (auto & blocksize : data){
+    for (auto & N : data){
       code_to_be_measured(N,blocksize, A,B,C);
     }
 }
