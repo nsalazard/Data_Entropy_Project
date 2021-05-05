@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
     VEC data = {1, 2, 4, 8};
     if (Q == 0) {
       // int N = 2048;
-      int N = 2048;
+      int N = 20;
       VEC A(N*N);
       VEC B(N*N);
       VEC C(N*N);
