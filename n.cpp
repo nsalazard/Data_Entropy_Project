@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
   // PERFOMANCE MEASURE
   if (P == 0) { // Blocksize
     // int data[13] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096};
-    std::vector<int> data = {1, 2, 4, 8};
+    VEC data(4) = {1, 2, 4, 8};
     if (Q == 0) {
       // int N = 2048;
       int N = 2048;
@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
     return 0;
   }
 
-  void fill(VEC & data){
+  void fill(VEC data){
     for (long unsigned int ii = 0; ii < data.size(); ++ii) {
       data[ii] = ii;
     }
