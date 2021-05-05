@@ -5,7 +5,7 @@
 CXXFLAGS = -lpapi -larmadillo
 CXXO = -O3
 
-all: mult_2048_O.txt
+all: mult_2048_O.txt mult_2048.txt
 
 %.x : %.cpp
 	g++ $< -o $@ $(CXXFLAGS)
