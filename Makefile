@@ -14,14 +14,14 @@ all: mult_2048_O.txt
 #CPU vs Nb
 
 #Sin optimizar
-mult_2048.txt : multiplicacion_blocking.x
+mult_2048.txt : n.x
 	./$< > $@ 0 0
 
 #Con optimización
-multiplicacion_blocking_O.x : multiplicacion_blocking.cpp
+n_O.x : n.cpp
 	g++ $(CXXO) $< -o $@ $(CXXFLAGS)
 
-mult_2048_O.txt : multiplicacion_blocking_O.x
+mult_2048_O.txt : n_O.x
 	./$< > $@ 0 0
 
 	
