@@ -105,9 +105,9 @@ int main(int argc, char **argv) {
           for (int ii = 0; ii < blockSize; ii++) {
             for (int jj = 0; jj < blockSize; jj++) {
               for (int kk = 0; kk < blockSize; kk++) {
-                K[N * (bii + ii) + (bjj + jj)] +=
-                    M[N * (bii + ii) + (bkk + kk)] *
-                    P[N * (bkk + kk) + (bjj + jj)];
+                C[N * (bii + ii) + (bjj + jj)] +=
+                    A[N * (bii + ii) + (bkk + kk)] *
+                    B[N * (bkk + kk) + (bjj + jj)];
               }
             }
           }
