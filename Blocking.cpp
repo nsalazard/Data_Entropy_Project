@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 			return 0;
 		}
 
-
+for (auto & Var : data){
 // start PAPI counters
     for (auto & X : data) {
     real_time = 0.0;
@@ -72,16 +72,16 @@ int main(int argc, char **argv)
     }
 
     if(P==0){
-      for (auto & blocksize : data){
-        code_to_be_measured(N,blocksize, A,B,C);
+      //Var = blocksize;
+	    code_to_be_measured(N,Var, A,B,C);
       }
 
-  }
-  if(P==1){
-    for (auto & N : data){
-      code_to_be_measured(N,blocksize, A,B,C);
+  else if(P==1){
+    //Var = N;
+	  code_to_be_measured(Var,blocksize, A,B,C);
     }
-}
+	    //code_to_be_measured(N,blocksize, A,B,C);
+
 
 
     if((retval=PAPI_flops_rate(PAPI_FP_OPS,&real_time, &proc_time, &flpops, &mflops))<PAPI_OK)
