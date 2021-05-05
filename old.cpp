@@ -11,9 +11,6 @@ int code_to_be_measured(const int N, const int blockSize, const VEC &A,
 void fill(VEC & data);
 
 int main(int argc, char **argv) {
-  const int P = std::atoi(argv[1]);
-  const int Q = std::atoi(argv[2]);
-
   // PAPI vars
   float real_time, proc_time, mflops;
   long long flpops;
@@ -23,7 +20,7 @@ int main(int argc, char **argv) {
   // PERFOMANCE MEASURE
 
     int data[4] = {1, 2, 4, 8};
-        int N = 20;
+    int N = 20;
 
 
     // start PAPI counters
