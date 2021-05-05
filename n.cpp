@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
   }
 
 
-void papi(float real_time, float proc_time, float mflops, long long flpops,float ireal_time,float iproc_time,float imflops, long long iflpops, int retval, VEC & data,const int N, const int blockSize, const VEC &A,const VEC &B, VEC &C){
+void papi(float real_time, float proc_time, float mflops, long long flpops,float ireal_time,float iproc_time,float imflops, long long iflpops, int retval, VEC & data,const int N, const int blocksize, const VEC &A,const VEC &B, VEC &C){
 
 
       real_time = 0.0;
