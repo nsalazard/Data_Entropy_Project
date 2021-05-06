@@ -65,6 +65,8 @@ int main(int argc, char **argv) {
         VEC A(N*N);
         VEC B(N*N);
         VEC C(N*N);
+	fill(A);
+        fill(B);
         int blocksize = 32/N;
       papi(real_time,proc_time, mflops, flpops,ireal_time,iproc_time, imflops, iflpops, retval, data, N, blocksize, A,B,C);
       }
