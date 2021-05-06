@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
     }
   }
 		
-    else if (P == 1) { // for (auto & N : data)
+    else if (P == 1 && Q == 0) { // for (auto & N : data)
       // int data[14] = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096,
       // 8192, 16384};
       
