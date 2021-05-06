@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+#include <random>
+#include <cmath>
 
 typedef std::vector<double> VEC;
 void fill(VEC data);
