@@ -40,29 +40,42 @@ int main(int argc, char **argv) {
       }
       if (Q == 1) {
         int N = 4096;
-      VEC A(N*N);
-      VEC B(N*N);
-      VEC C(N*N);
+        VEC A(N*N);
+        VEC B(N*N);
+        VEC C(N*N);
       // initialize matrices
-      fill(A);
-      fill(B);
-      for (auto &Var : data) {
-      papi(real_time,proc_time, mflops, flpops,ireal_time,iproc_time, imflops, iflpops, retval, data, N, Var, A,B,C);
+        fill(A);
+        fill(B);
+        for (auto &Var : data) {
+        papi(real_time,proc_time, mflops, flpops,ireal_time,iproc_time, imflops, iflpops, retval, data, N, Var, A,B,C);
       }
     }
   }
-		/*
+		
     else if (P == 1) { // for (auto & N : data)
       // int data[14] = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096,
       // 8192, 16384};
+      
+
       int data[2] = {4, 8};
-      int blocksize = 2; //Ejemplo para pruebas
+      int cache = 32;
+      int blocksize = 0;
+
+      for (auto &N : data) {
+        VEC A(N*N);
+        VEC B(N*N);
+        VEC C(N*N);
+        int blocksize = 32/N;
+      papi(real_time,proc_time, mflops, flpops,ireal_time,iproc_time, imflops, iflpops, retval, data, N, blocksize, A,B,C);
+      }
+
+
     }
     else {
       std::cout << "Not a valid argument" << std::endl;
       return 0;
     }
-		*/
+		
 
     // start PAPI counters
     
