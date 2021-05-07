@@ -2,8 +2,11 @@
 # include <cstdio>
 # include <cstdlib>
 #include <armadillo>
+# include <vector>
 # include "papi.h"
 int code_to_be_measured(const arma::mat & M, arma::mat & N, arma::mat & R);
+
+typedef std::vector<int> VEC;
 
 int main(int argc, char **argv)
 {
