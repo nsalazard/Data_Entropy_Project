@@ -4,7 +4,7 @@
 #include <armadillo>
 # include <vector>
 # include "papi.h"
-int code_to_be_measured(const arma::mat & M, arma::mat & N, arma::mat & R);
+int code_to_be_measured(const arma::mat & A, const arma::mat & B, arma::mat & C);
 
 typedef std::vector<int> VEC;
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
    // VEC data = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
       VEC data = {2, 4, 8,  16, 32, 64, 128, 256};
     
-      std::cout<< "N" << "t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t"<< "C[3]" << "\n";
+      std::cout<< "N" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t"<< "C(1,2)" << "\n";
       for (auto &N : data) {
       real_time = 0.0;
       proc_time = 0.0;
@@ -57,8 +57,8 @@ arma::mat C(N, N);
            return 0;
 }
 
-int code_to_be_measured(const arma::mat & M, arma::mat & N, arma::mat & R)
+int code_to_be_measured(const arma::mat & A, const arma::mat & B, arma::mat & C)
 {
-    R = M*N;
+    C = A*B;
     return 0;
 }
