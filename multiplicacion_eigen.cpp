@@ -10,6 +10,8 @@ typedef std::vector<int> VEC;
 
 int main(int argc, char **argv)
 {
+    std::cout.precision(15);
+	std::cout.setf(std::ios::scientific);
 // PAPI vars
     float real_time, proc_time,mflops;
     long long flpops;
