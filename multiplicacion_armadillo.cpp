@@ -20,7 +20,7 @@ int main(int argc, char **argv)
    // VEC data = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
       VEC data = {2, 4, 8,  16, 32, 64, 128, 256};
     
-      std::cout<< "N" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t"<< "C(1,2)" << "\n";
+      std::cout<< "N" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t"<< "C(1,1)" << "\n";
       for (auto &N : data) {
       real_time = 0.0;
       proc_time = 0.0;
@@ -51,7 +51,7 @@ arma::mat C(N, N);
         exit(1);
     }
     
-    std::cout <<  N  << "\t" <<  proc_time << "\t" <<  flpops << "\t" <<  mflops << "\t" << C(1,2) << "\n";
+    std::cout <<  N  << "\t" <<  proc_time << "\t" <<  flpops << "\t" <<  mflops << "\t" << C(1,1) << "\n";
     // Do something here, like computing the average of the resulting matrix, to avoid the optimizer deleting the code
       }
            return 0;
