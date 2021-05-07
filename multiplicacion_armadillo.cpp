@@ -35,13 +35,7 @@ int main(int argc, char **argv)
 arma::mat A(N, N, arma::fill::randu);
 arma::mat B(N, N, arma::fill::randu);
 arma::mat C(N, N);
-// PAPI vars
-    float real_time, proc_time,mflops;
-    long long flpops;
-    float ireal_time, iproc_time, imflops;
-    long long iflpops;
-    int retval;
-// PERFOMANCE MEASURE
+
 // start PAPI counters
     if((retval=PAPI_flops_rate(PAPI_FP_OPS,&ireal_time,&iproc_time,&iflpops,&imflops)) < PAPI_OK)
     {
