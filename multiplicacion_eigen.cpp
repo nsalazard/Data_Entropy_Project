@@ -52,7 +52,7 @@ int main(int argc, char **argv)
    
 // Do something here, like computing the average of the resulting matrix, to avoid the optimizer deleting the code
      std::cout<< "N" << "\t\t" <<  "Time CPU " << "\t\t" <<  "Total Flops" << "\t\t" << "MFLOPS" << "\t\t"<< "C[3]" << "\n";
-     std::cout<< "\t" <<  N  << "\t\t" <<  proc_time << "\t\t" <<  flpops << "\t\t" <<  mflops << "\t\t" << C.sum() << "\n"; 
+     std::cout <<  N  << "\t\t" <<  proc_time << "\t\t" <<  flpops << "\t\t" <<  mflops << "\t\t" << C.sum() << "\n"; 
       }
     return 0;
 }
