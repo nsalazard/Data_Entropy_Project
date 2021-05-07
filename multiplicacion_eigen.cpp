@@ -22,7 +22,7 @@ int main(int argc, char **argv)
       
       VEC data = {2, 4, 8,  16, 32, 64, 128, 256};
 
-      for (auto &N : data) {
+      for (auto N : data) {
       real_time = 0.0;
       proc_time = 0.0;
       mflops = 0.0;
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     printf("Real_time: %f Proc_time: %f Total flpops: %lld MFLOPS: %f\n",
            real_time, proc_time,flpops,mflops);
 // Do something here, like computing the average of the resulting matrix, to avoid the optimizer deleting the code
-    printf("Sum of all elements of the matrix: %f\n", C.sum());
+     std::cout<< "\t" <<  N  << "\t" <<  proc_time << "\t" <<  flpops << "\t" <<  mflops << "\t" << C.sum() << "\n"; 
            return 0;
       }
 }
