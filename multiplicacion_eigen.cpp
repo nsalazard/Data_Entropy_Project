@@ -21,7 +21,8 @@ int main(int argc, char **argv)
    // VEC data = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
       
       VEC data = {2, 4, 8,  16, 32, 64, 128, 256};
-
+    
+      std::cout<< "N" << "\t\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t\t" << "MFLOPS" << "\t"<< "C[3]" << "\n";
       for (auto &N : data) {
       real_time = 0.0;
       proc_time = 0.0;
@@ -51,9 +52,8 @@ int main(int argc, char **argv)
     }
    
 // Do something here, like computing the average of the resulting matrix, to avoid the optimizer deleting the code
-     std::cout<< "N" << "\t\t" <<  "Time CPU " << "\t\t" <<  "Total Flops" << "\t\t" << "MFLOPS" << "\t\t"<< "C[3]" << "\n";
+
      std::cout <<  N  << "\t\t" <<  proc_time << "\t\t" <<  flpops << "\t\t" <<  mflops << "\t\t" << C.sum() << "\n"; 
-      }
     return 0;
 }
 
