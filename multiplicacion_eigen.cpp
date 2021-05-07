@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     }
    
 // Do something here, like computing the average of the resulting matrix, to avoid the optimizer deleting the code
-     std::cout<< "Blocksize" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t" << "C[3]" << "\n";
+     std::cout<< "N" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t" << "C[3]" << "\n";
      std::cout<< "\t" <<  N  << "\t" <<  proc_time << "\t" <<  flpops << "\t" <<  mflops << "\t" << C.sum() << "\n"; 
       }
     return 0;
