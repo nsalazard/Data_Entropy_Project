@@ -22,7 +22,7 @@ int main(int argc, char **argv)
       
       VEC data = {2, 4, 8,  16, 32, 64, 128, 256};
 
-      for (auto N : data) {
+      for (auto &N : data) {
       real_time = 0.0;
       proc_time = 0.0;
       mflops = 0.0;
@@ -51,9 +51,10 @@ int main(int argc, char **argv)
     }
    
 // Do something here, like computing the average of the resulting matrix, to avoid the optimizer deleting the code
+     std::cout<< "Blocksize" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t" << "C[3]" << "\n";
      std::cout<< "\t" <<  N  << "\t" <<  proc_time << "\t" <<  flpops << "\t" <<  mflops << "\t" << C.sum() << "\n"; 
-           return 0;
       }
+    return 0;
 }
 
 int code_to_be_measured(const Eigen::MatrixXd & M, Eigen::MatrixXd & N, Eigen::MatrixXd & R)
