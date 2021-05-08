@@ -5,7 +5,10 @@
 CXXFLAGS = -lpapi -larmadillo
 CXXO = -O3
 
-all: mult_2048_O.txt mult_2048.txt
+all :plot.pdf
+
+plot.pdf: plot.gp bloc_2.txt bloc_4.txt bloc_8.txt bloc_16.txt bloc_32.txt bloc_64.txt bloc_128.txt bloc_256.txt bloc_512.txt bloc_1024.txt
+	gnuplot plot.gp
 
 %.x : %.cpp
 	g++ $< -o $@ $(CXXFLAGS)
