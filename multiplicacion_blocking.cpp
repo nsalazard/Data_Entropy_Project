@@ -17,6 +17,7 @@ long long iflpops, int retval, IVEC & data,const int N, const int blockSize, con
 int main(int argc, char **argv) {
   const int P = std::atoi(argv[1]);
   const int Q = std::atoi(argv[2]);
+  const int N = std::atoi(argv[3]);
 
   // PAPI vars
   float real_time, proc_time, mflops;
@@ -39,6 +40,7 @@ int main(int argc, char **argv) {
       fill(B);
       
       for (auto &blocksize : data) {
+	      if (blocksize <= N){
         real_time = 0.0;
       proc_time = 0.0;
       mflops = 0.0;
@@ -50,10 +52,11 @@ int main(int argc, char **argv) {
       retval = 0;
       papi(real_time,proc_time, mflops, flpops,ireal_time,iproc_time, imflops, iflpops, retval, data,N, blocksize, A,B,C);
 
-				}
+	}
+	      else {return 0;}
+      }
       }
       else if (Q == 1) {
-        int N = 1024;
         VEC A(N*N);
         VEC B(N*N);
         VEC C(N*N);
