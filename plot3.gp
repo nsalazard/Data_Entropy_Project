@@ -4,4 +4,4 @@ set xlabel 'Blocksize'
 set ylabel 'Tiempo CPU'
 set logscale
 set title 'Tiempo de CPU vs Blocksize'
-plot "bloc_256.txt" u 1:2 w lp lw 2 t "N=256" "bloc_512.txt" u 1:2 w lp lw 2 t "N=512","bloc_1024.txt" u 1:2 w lp lw 2 t "N=1024"
+plot "bloc_512.txt" u 1:2 w lp lw 2 t "N=512","bloc_1024.txt" u 1:2 w lp lw 2 t "N=1024"
