@@ -31,7 +31,6 @@ int main(int argc, char **argv) {
     IVEC data = {1, 2, 4, 8, 16, 32, 64, 128, 256};
     std::cout<< "Blocksize" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t" << "C[3]" << "\n";
     if (Q == 0) {
-      int N = 256;
       VEC A(N*N);
       VEC B(N*N);
       VEC C(N*N);
