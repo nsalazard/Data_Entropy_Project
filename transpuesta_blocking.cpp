@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
 
     else if (P == 1) { // for (auto & N : data)
     
-      std::cout<< "N" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t" << "C[3]" << "\n";
+      std::cout<< "N" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t" << "MT[3]" << "\n";
       IVEC data = {2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,2048, 4096, 8192, 16384};
      
 
@@ -151,7 +151,7 @@ long long iflpops, int retval, IVEC & data,const int N, const int blockSize, con
         exit(1);
       }
 
-      code_to_be_measured(N,blocksize, M,MT);
+      code_to_be_measured(N,blockSize, M,MT);
 
       if ((retval = PAPI_flops_rate(PAPI_FP_OPS, &real_time, &proc_time,
                                     &flpops, &mflops)) < PAPI_OK) {
