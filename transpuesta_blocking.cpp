@@ -52,13 +52,11 @@ int main(int argc, char **argv) {
 				}
       }
       else if (Q == 1) {
-        int N = 4096;
-        VEC A(N*N);
-        VEC B(N*N);
-        VEC C(N*N);
+      int N = 4096;
+      VEC M(N*N);
+      VEC MT(N*N);
       // initialize matrices
-        fill(A);
-        fill(B);
+      fill(M);
         for (auto &blocksize : data) {
           real_time = 0.0;
       proc_time = 0.0;
@@ -81,11 +79,10 @@ int main(int argc, char **argv) {
      
 
       for (auto &N : data) {
-        VEC A(N*N);
-        VEC B(N*N);
-        VEC C(N*N);
-        fill(A);
-        fill(B);
+        VEC M(N*N);
+        VEC MT(N*N);
+      // initialize matrices
+        fill(M);
         real_time = 0.0;
         proc_time = 0.0;
         mflops = 0.0;
