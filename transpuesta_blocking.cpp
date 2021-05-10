@@ -119,8 +119,8 @@ int main(int argc, char **argv) {
   int code_to_be_measured(const int N, const int blockSize, const VEC &M, VEC &MT) {
     for (int ii = 0; ii<N; ii+=blockSize) {
     for (int jj=0; jj<N; jj+=blockSize) {
-      for(int bi = ii; bi < ii + bb; bi++){
-        for(int bj = jj; bj < jj + bb; bj++){
+      for(int bi = ii; bi < ii +blockSize ; bi++){
+        for(int bj = jj; bj < jj + blockSize; bj++){
       MT [bi*N+bj] = M [bj*N+bi];
         }
       }
