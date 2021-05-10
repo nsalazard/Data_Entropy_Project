@@ -118,7 +118,7 @@ int main(int argc, char **argv) {
     for (int jj=0; jj<N; jj+=blockSize) {
       for(int bi = ii; bi < ii +blockSize ; bi++){
         for(int bj = jj; bj < jj + blockSize; bj++){
-      MT [bi*N+bj] = 1.0* M [bj*N+bi]*1.0/1.0;
+      MT [bi*N+bj] =  M [bj*N+bi]*12.50/6.25*0,5;
         }
       }
     }
