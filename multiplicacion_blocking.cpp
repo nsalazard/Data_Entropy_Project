@@ -6,7 +6,7 @@
 #include <cmath>
 #include <vector>
 
-typedef std::vector<int> VEC;
+typedef std::vector<double> VEC;
 typedef std::vector<int> IVEC;
 void fill(VEC &D);
 int code_to_be_measured(const int N, const int blockSize, const VEC &A,const VEC &B, VEC &C);
@@ -138,10 +138,10 @@ int main(int argc, char **argv) {
   }
 
   void fill(VEC &D){
-	//std::mt19937 gen(0);
-  //std::normal_distribution<int> dis(1,2);
+std::mt19937 gen(0);
+  std::normal_distribution<int> dis(1.0,2.0);
   	for (auto & x : D) {
-   	 x = 1;//dis(gen);
+   	 x = dis(gen);
   }
     }
 
@@ -170,7 +170,7 @@ void papi(float real_time, float proc_time, float mflops, long long flpops,float
       std::cout<< "\t" <<  blocksize  << "\t" <<  proc_time << "\t" <<  flpops << "\t" <<  mflops << "\t" << C[3] << "\n";
       // Do something here, like computing the average of the resulting matrix,
       // to avoid the optimizer deleting the code
-      C [3]= {0};
+      C [3]= {0.0};
 
     }
     // End for
