@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
   // PERFOMANCE MEASURE
   if (P == 0) { // Blocksize
     // int data[13] = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096};
-    IVEC data = {1, 2, 4, 8, 16, 32, 64, 128, 256};
+    IVEC data = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
     //std::cout<< "Blocksize" << "\t" <<  "Time CPU " << "\t" <<  "Total Flops" << "\t" << "MFLOPS" << "\t" << "C[3]" << "\n";
     if (Q == 0) {
       VEC A(N*N);
