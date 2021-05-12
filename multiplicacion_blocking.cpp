@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
 
   void fill(VEC &D){
 std::mt19937 gen(0);
-  std::normal_distribution<int> dis(1.0,2.0);
+  std::normal_distribution<double> dis(1.0,2.0);
   	for (auto & x : D) {
    	 x = dis(gen);
   }
