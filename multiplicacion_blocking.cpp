@@ -6,7 +6,7 @@
 #include <cmath>
 #include <vector>
 
-typedef std::vector<double> VEC;
+typedef std::vector<int> VEC;
 typedef std::vector<int> IVEC;
 void fill(VEC &D);
 int code_to_be_measured(const int N, const int blockSize, const VEC &A,const VEC &B, VEC &C);
@@ -138,10 +138,10 @@ int main(int argc, char **argv) {
   }
 
   void fill(VEC &D){
-	std::mt19937 gen(0);
-  std::normal_distribution<double> dis(1.0, 1.5);
+	//std::mt19937 gen(0);
+  //std::normal_distribution<int> dis(1,2);
   	for (auto & x : D) {
-   	 x = dis(gen);
+   	 x = 1;//dis(gen);
   }
     }
 
