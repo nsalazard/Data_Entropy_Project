@@ -170,7 +170,7 @@ void papi(float real_time, float proc_time, float mflops, long long flpops,float
       std::cout<< "\t" <<  blocksize  << "\t" <<  proc_time << "\t" <<  flpops << "\t" <<  mflops << "\t" << C[3] << "\n";
       // Do something here, like computing the average of the resulting matrix,
       // to avoid the optimizer deleting the code
-      C [3]= {0.0};
+      C [3]= {0};
 
     }
     // End for
