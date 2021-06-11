@@ -8,7 +8,7 @@ const int N =  350;
 const int Npart =  60; //N particles = 60*60
 const int lmin = (N/2)-(Npart/2);
 const int lmax = (N/2)+(Npart/2);
-const int NSTEPS = 1000000;
+const int NSTEPS = 10000;
 const int Np = N/10;
 
 typedef std::vector<double> vector;
