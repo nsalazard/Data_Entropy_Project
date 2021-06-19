@@ -88,6 +88,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 		  	initial_conditions(prob, Ng );
     		}
 	}
+	}
 	else{
 		
 	std::cout << 0 << "\t" << Np << std::endl;
