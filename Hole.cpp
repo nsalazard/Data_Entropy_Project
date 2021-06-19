@@ -137,13 +137,13 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Npart){
                 //Move down
                 if (3.0 < a){
                     if(ix == N-1){
-											if (N/2 - hole/2 <= iy <= N/2 + hole/2){
-												data[ix*N + iy] = 0.0;
-												Npart -= 1;
-											}
-											else{
+			if (N/2 - hole/2 <= iy <= N/2 + hole/2){
+				data[ix*N + iy] = 0.0;
+				Npart -= 1;
+				}
+			else{
                         continue;
-											}
+			}
                         }
                     else if (data[(ix+1)*N + iy] == 0.0){
                         data[ix*N + iy] = 0.0;
