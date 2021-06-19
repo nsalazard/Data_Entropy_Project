@@ -67,10 +67,10 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
     print_gnuplot(data, N, DELTA,Xmin,Ymin);
 
     for(int istep = 0; istep < nsteps; istep += 1) {
-        entropy(data, N,71, DELTA, hole,Npart);
-				if (istep%100 == 0) {
+        entropy(data, N,istep, DELTA, hole,Npart);
+	if (istep%100 == 0) {
         print_gnuplot(data, N, DELTA,Xmin,Ymin);
-				}
+			}
     }
 	}
 	else{  //Print the entropy
