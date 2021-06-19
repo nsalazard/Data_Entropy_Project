@@ -84,6 +84,9 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
         entropy(data, N,istep, DELTA, hole,Npart);
         //print_screen(data, N);
         if (istep%100 == 0) {
+		if (Npart == 0) {
+			exit (EXIT_FAILURE);
+		}
 		  	std::cout << istep << "\t" << grid(data,prob,Np, N, Npart) << std::endl;
 		  	initial_conditions(prob, Np);
     		}
@@ -94,6 +97,9 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
 	std::cout << 0 << "\t" << Npart << std::endl;
     	for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Npart);
+		if (Npart == 0) {
+			exit (EXIT_FAILURE);
+		}
         //print_screen(data, N);
         	if (istep%100 == 0) {
 		  	std::cout << istep << "\t" <<  Npart << std::endl;
