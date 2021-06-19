@@ -90,10 +90,7 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
 	if (Npart == 0) {
 		exit (EXIT_FAILURE);
 	}
-        //print_screen(data, N);
-        	if (istep%100 == 0) {
-		  	std::cout << istep << "\t" <<  Npart << std::endl;
-    		}
+	std::cout << istep << "\t" <<  Npart << std::endl;
 	}	
 	}
 }
