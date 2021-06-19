@@ -70,7 +70,7 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
         entropy(data, N,istep, DELTA, hole,Npart);
 	if (istep%100 == 0) {
 		if (Npart == 0) {
-			return 0;
+			exit (EXIT_FAILURE);
 		}
         print_gnuplot(data, N, DELTA,Xmin,Ymin);
 			}
