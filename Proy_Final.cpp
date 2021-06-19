@@ -66,14 +66,13 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
     print_gnuplot(data, N, DELTA,Xmin,Ymin);
 
     for(int istep = 0; istep < nsteps; istep += 1) {
-        entropy(data, N,71, DELTA);
+        entropy(data, N,istep, DELTA);
 				if (istep%100 == 0) {
         print_gnuplot(data, N, DELTA,Xmin,Ymin);
 				}
     }
 	}
 	else{  //Print the entropy
-    //print_screen(data, N);
     std::cout << 0 << "\t" << grid(data,prob,Np, N, Npart) << std::endl;
     initial_conditions(prob, Np);
     for(int istep = 1; istep <= nsteps; istep += 1) {
@@ -83,8 +82,8 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
 		  	std::cout << istep << "\t" << grid(data,prob,Np, N, Npart) << std::endl;
 		  	initial_conditions(prob, Np);
     		}
-			}
-		}
+	}
+	}
 }
 
 void entropy(vector & data, int N,int b, double DELTA){
