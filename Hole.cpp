@@ -69,11 +69,14 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
     for(int istep = 0; istep < nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Npart);
 	if (istep%100 == 0) {
+		if (Npart == 0) {
+			return 0;
+		}
         print_gnuplot(data, N, DELTA,Xmin,Ymin);
 			}
     }
 	}
-	else{  //Print the entropy
+	if (u == 1){  //Print the entropy
     //print_screen(data, N);
     std::cout << 0 << "\t" << grid(data,prob,Np, N, Npart) << std::endl;
     initial_conditions(prob, Np);
@@ -86,6 +89,17 @@ void evolve(vector & data, vector & prob, int Np, int N, int nsteps,double Xmin,
     		}
 			}
 		}
+	else{
+		
+	std::cout << 0 << "\t" << Npart << std::endl;
+    	for(int istep = 1; istep <= nsteps; istep += 1) {
+        entropy(data, N,istep, DELTA, hole,Npart);
+        //print_screen(data, N);
+        	if (istep%100 == 0) {
+		  	std::cout << istep << "\t" <<  Npart << std::endl;
+    		}
+	}	
+	}
 }
 
 void entropy(vector & data, int N,int b, double DELTA,int hole,int &Npart){
@@ -212,11 +226,11 @@ void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double 
     for(int ix = 0; ix < N; ++ix) {
         double x =  Xmin + ix*DELTA;
         for(int iy = 0; iy < N; ++iy) {
-					if (data[ix*N + iy] != 0.0){
+	 if (data[ix*N + iy] != 0.0){
             double y = Ymin + iy*DELTA;
             std::cout << x << "\t" << y << "\n";
         }
-				else{
+	else{
         continue;
         }
 				}
