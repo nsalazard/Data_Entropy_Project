@@ -58,13 +58,19 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
     start_gnuplot(Xmin,Ymin);
     print_gnuplot(data, N, DELTA,Xmin,Ymin);
     for(int istep = 0; istep < nsteps; istep += 1) {
-        entropy(data, N,istep, DELTA, hole,Np);
-	if (istep%100 == 0) {
-		if (Np == 0) {
+        entropy(data, N,istep, DELTA, hole,Np);   
+	if (Np == 0) {
 			exit (EXIT_FAILURE);
 		}
+	if (istep <= 17060){
+        if (istep%100 == 0) {
+		   print_gnuplot(data, N, DELTA,Xmin,Ymin);
+    		}
+	}
+	else {
         print_gnuplot(data, N, DELTA,Xmin,Ymin);
-			}
+	}
+			
     }
 	}
 	if (u == 1){  //Print the entropy
@@ -81,8 +87,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 		  	std::cout << istep << "\t" << grid(data,prob,Ng , N, Np) << std::endl;
 		  	initial_conditions(prob, Ng );
     		}
-			}
-		}
+	}
 	else{
 		
 	std::cout << 0 << "\t" << Np << std::endl;
@@ -201,7 +206,7 @@ void print_screen(const vector & data, int N){
 void start_gnuplot(double Xmin,double Ymin)
 {
     std::cout << "set term gif animate delay 10\n";
-    std::cout << "set output 'Entropy_03.gif'\n";
+    std::cout << "set output 'Entropy_hole.gif'\n";
 		std::cout << "set xrange ["<<Xmin<<":"<<-Xmin<<".0]\n";
 		std::cout << "set yrange ["<<Ymin<<":"<<-Ymin<<".0]\n";
 }
