@@ -207,7 +207,7 @@ void print_screen(const vector & data, int N){
 void start_gnuplot(double Xmin,double Ymin)
 {
     std::cout << "set term gif animate delay 10\n";
-    std::cout << "set output 'Entropy_hole.gif'\n";
+    std::cout << "set output 'Entropy_Hole.gif'\n";
 		std::cout << "set xrange ["<<Xmin<<":"<<-Xmin<<".0]\n";
 		std::cout << "set yrange ["<<Ymin<<":"<<-Ymin<<".0]\n";
 }
