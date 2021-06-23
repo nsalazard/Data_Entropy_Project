@@ -11,7 +11,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 void entropy(vector & data, int N,int b, double DELTA);
 double grid(vector & data, vector & prob, int Ng , int N,int Np);
 void print_screen(const vector & data, int N);
-void start_gnuplot(double Xmin,double Ymin);
+void start_gnuplot(double Xmin,double Ymin,int N);
 void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double Ymin, int istep);
 double spread(vector & data, int N, double DELTA, double Xmin,double Ymin, int istep,int Np);
 
@@ -59,7 +59,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 {
 	double s = 5;
 	if (u == 0){  //Create a Gif using Gnuplot
-    start_gnuplot(Xmin,Ymin);
+    start_gnuplot(Xmin,Ymin,N);
     print_gnuplot(data, N, DELTA,Xmin,Ymin, 0);
     for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA);
@@ -206,10 +206,10 @@ void print_screen(const vector & data, int N){
     }
     std::cout << "\n";
 }
-void start_gnuplot(double Xmin,double Ymin)
+void start_gnuplot(double Xmin,double Ymin,int N)
 {
     std::cout << "set term gif animate delay 10\n";
-    std::cout << "set output 'Entropy_new.gif'\n";
+    std::cout << "set output 'Entropy_"<<N<<"_.gif'\n";
 		std::cout << "set xrange ["<<Xmin<<":"<<-Xmin<<".0]\n";
 		std::cout << "set yrange ["<<Ymin<<":"<<-Ymin<<".0]\n";
 }
