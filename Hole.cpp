@@ -10,7 +10,7 @@ void entropy(vector & data, int N, int b, double DELTA,int hole,int &Np);
 double grid(vector & data, vector & prob, int Ng , int N,int Np);
 void print_screen(const vector & data, int N);
 void start_gnuplot(double Xmin,double Ymin);
-void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double Ymin);
+void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double Ymin, int istep);
 int main(int argc, char **argv)
 {
 	int N = std::atoi(argv[1]); // Matrix  (500)
@@ -56,19 +56,19 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 {
 	if (u == 0){  //Create a Gif using Gnuplot
     start_gnuplot(Xmin,Ymin);
-    print_gnuplot(data, N, DELTA,Xmin,Ymin);
+    print_gnuplot(data, N, DELTA,Xmin,Ymin,0);
     for(int istep = 0; istep < nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);   
 	if (Np == 0) {
 			exit (EXIT_FAILURE);
 		}
-	if (istep <= 9870){
+	if (istep <= 15800){
         if (istep%100 == 0) {
-		   print_gnuplot(data, N, DELTA,Xmin,Ymin);
+		   print_gnuplot(data, N, DELTA,Xmin,Ymin,istep);
     		}
 	}
 	else {
-        print_gnuplot(data, N, DELTA,Xmin,Ymin);
+        print_gnuplot(data, N, DELTA,Xmin,Ymin,istep);
 	}
 			
     }
@@ -111,7 +111,7 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
                 //Move up
                 if (a < 1.0){
                     if(ix == 0){
-			if (N/2-hole/2 <= iy <= N/2+hole/2){
+			if (N/2-hole/2 <= iy && iy <= N/2+hole/2){
 				data[ix*N + iy] = 0.0;
 				Np -= 1;
 			}
@@ -211,9 +211,9 @@ void start_gnuplot(double Xmin,double Ymin)
 		std::cout << "set xrange ["<<Xmin<<":"<<-Xmin<<".0]\n";
 		std::cout << "set yrange ["<<Ymin<<":"<<-Ymin<<".0]\n";
 }
-void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double Ymin)
+void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double Ymin, int istep)
 {
-    std::cout << "plot '-' w p ls 3 \n";
+    std::cout << "plot '-' w p ls 3  t '"<< istep <<"' \n";
     for(int ix = 0; ix < N; ++ix) {
         double x =  Xmin + ix*DELTA;
         for(int iy = 0; iy < N; ++iy) {
