@@ -87,14 +87,14 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
     		}
 			}
 		}
-  else if (u == 2 || u ==3){  //Print r
+  else if (u == 2 || u ==3){  //Print r  // 
     //print_screen(data, N);
 		double r = 0.0;
     double a = 0;
     std::cout << 0 << "\t" << spread( data,N, DELTA, Xmin, Ymin,0,Np) << std::endl;
     for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA);
-				r += spread( data,N, DELTA, Xmin, Ymin,istep,Np);
+				r = spread( data,N, DELTA, Xmin, Ymin,istep,Np);
         //print_screen(data, N);
 				 if (istep%100 == 0) {
 		  	std::cout << istep << "\t" << r << std::endl;
