@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     // set initial and boundary conditions
   	initial_conditions(matrix, N);
 	if (u == 3){
-		data[N/2*N + N/2] = DELTA;
+		matrix[N/2*N + N/2] = DELTA;
 	}
 	if (u != 3){
 	initial_conditions(prob, Ng );
