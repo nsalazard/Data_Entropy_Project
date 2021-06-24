@@ -27,14 +27,19 @@ int main(int argc, char **argv)
 	int lmin = -Xmin-(Npart/2);
 	int lmax = -Xmin+(Npart/2);
 	int Ng  = N/10;
-  int Np = Npart * Npart;
+  	int Np = Npart * Npart;
     // declare data structures
-  vector matrix(N*N); 
+  	vector matrix(N*N); 
 	vector prob(Ng *Ng );
     // set initial and boundary conditions
-  initial_conditions(matrix, N);
+  	initial_conditions(matrix, N);
+	if (u == 3){
+		data[N/2*N + N/2] = DELTA;
+	}
+	if (u != 3){
 	initial_conditions(prob, Ng );
-  cream_in_coffee(matrix, N, lmin,lmax, DELTA);
+  	cream_in_coffee(matrix, N, lmin,lmax, DELTA);
+	}
     // evolve and print
   evolve(matrix,prob,Ng , N, NSTEPS, Xmin, Ymin, DELTA,Np,u);
   return 0;
