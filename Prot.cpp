@@ -253,5 +253,5 @@ double spread(vector & data, int N, double DELTA, double Xmin,double Ymin, int i
         }
 				}
 		}
-		return r/Np;
+		return std::sqrt(r/Np);
 }
