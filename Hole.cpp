@@ -108,12 +108,6 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
         for(int iy = 0; iy < N; ++iy) {
             if (data[ix*N + iy] != 0.0){
                 double a = dis(gen);
-		
-		if (ix == 0 && N/2-hole/2 <= iy && iy <= N/2+hole/2){
-			data[ix*N + iy] = 0.0;
-			Np -= 1;
-			continue;
-			}
                 //Move up
                 if (a < 1.0){
                     if(ix == 0){
@@ -166,6 +160,10 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
                         continue;
                     }
                 }
+		    		if (ix == 0 && N/2-hole/2 <= iy && iy <= N/2+hole/2){
+			data[ix*N + iy] = 0.0;
+			Np -= 1;
+			}
             }
             else {
                 continue;
