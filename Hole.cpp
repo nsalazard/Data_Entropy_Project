@@ -57,7 +57,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	if (u == 0){  //Create a Gif using Gnuplot
     start_gnuplot(Xmin,Ymin);
     print_gnuplot(data, N, DELTA,Xmin,Ymin,0);
-    for(int istep = 0; istep < nsteps; istep += 1) {
+    for(int istep = 1; istep < nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);   
 	if (Np == 0) {
 			exit (EXIT_FAILURE);
