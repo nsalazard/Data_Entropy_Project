@@ -113,6 +113,7 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
 			data[ix*N + iy] = 0.0;
 			Np -= 1;
 			}
+		    }
                 //Move up
                 if (a < 1.0){
                     if(ix == 0){
