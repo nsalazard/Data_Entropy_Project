@@ -59,10 +59,10 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
     print_gnuplot(data, N, DELTA,Xmin,Ymin,0);
     for(int istep = 1; istep < nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);   
-	if (Np == 0) {
+	if (Np <= 0) {
 			exit (EXIT_FAILURE);
 		}
-	if (istep <= 15800){
+	if (istep <= 10){
         if (istep%100 == 0) {
 		   print_gnuplot(data, N, DELTA,Xmin,Ymin,istep);
     		}
@@ -80,7 +80,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
     for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);
         //print_screen(data, N);
-	if (Np == 0) {
+	if (Np <= 0) {
 		exit (EXIT_FAILURE);
 	}
         if (istep%100 == 0) {
@@ -94,7 +94,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	std::cout << 0 << "\t" << Np << std::endl;
     	for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);
-	if (Np == 0) {
+	if (Np <= 0) {
 		exit (EXIT_FAILURE);
 	}
 	std::cout << istep << "\t" <<  Np << std::endl;
