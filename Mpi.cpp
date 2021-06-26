@@ -91,8 +91,7 @@ void cream_in_coffee(vector & data, int nx,int ny, int Npart,double DELTA, int p
     }
 }
 
-void evolve(vector & data, vector & prob , int nx, int ny, int nsteps,double Xmin,double Ymin,
-            double DELTA,int Np,int uint pid, int np)
+void evolve(vector & data, vector & prob , int nx, int ny, int nsteps,double Xmin,double Ymin,double DELTA,int Np,int u, int pid, int np)
 {
 	double s = 5;
 	if (u == 0){  //Create a Gif using Gnuplot
