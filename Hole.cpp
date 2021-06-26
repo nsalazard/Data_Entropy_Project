@@ -141,7 +141,8 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
 			}
 			else{
                         continue;
-			}	
+			}
+			}
 			//	
                     else if (data[ix*N + iy+1] == 0.0){
                             data[ix*N + iy] = 0.0;
@@ -165,6 +166,7 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
 			else{
                         continue;
 			}	
+			}
 			//
                     else if (data[ix*N + iy-1] == 0.0){
                             data[ix*N + iy] = 0.0;
@@ -188,6 +190,7 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
 			else{
                         continue;
 			}	
+			}
 			//
                     else if (data[(ix+1)*N + iy] == 0.0){
                         data[ix*N + iy] = 0.0;
