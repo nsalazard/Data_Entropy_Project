@@ -8,7 +8,7 @@ typedef std::vector<double> vector;
 
 void initial_conditions(vector & data, int nx, int ny, int pid, int np);
 void cream_in_coffee(vector & data, int nx,int ny, int Npart,double DELTA, int pid, int np);
-void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin,double Ymin,double DELTA,int Np,int u);
+void evolve(vector & data, vector & prob , int nx, int ny, int nsteps,double Xmin,double Ymin,double DELTA,int Np,int u, int pid, int np);
 void entropy(vector & data, int nx, int ny,int b, double DELTA,int pid, int np);
 double grid(vector & data, vector & prob, int Ng , int nx, int ny,int Np);
 void print_screen(const vector & data, int nx, int ny);
@@ -21,13 +21,10 @@ double spread(vector & data, int N, double DELTA, double Xmin,double Ymin, int i
 
 int main(int argc, char **argv)
 {
-	if (u != 3){
-	initial_conditions(prob, Ng );
-  	cream_in_coffee(matrix, N, lmin,lmax, DELTA);
-	}
-    // evolve and print
-  evolve(matrix,prob,Ng , N, NSTEPS, Xmin, Ymin, DELTA,Np,u);
-
+	int N = std::atoi(argv[1]); // Matrix  (500)
+	int Npart = std::atoi(argv[2]); // Particles = Npart*Npart (20)
+	int NSTEPS = std::atoi(argv[3]); //Steps
+	int u = std::atoi(argv[4]); //Steps
     // MPI //
 
     int pid = 0, nproc = 0;
@@ -44,11 +41,12 @@ int main(int argc, char **argv)
 	double Ymin = -NY/2;
 	int lmin = -Xmin-(Npart/2);
 	int lmax = -Xmin+(Npart/2);
+	int Np = Npart * Npart;
 
 
 
     // declare data structures
-    vector matrix(NXlocal*NY);
+  vector matrix(NXlocal*NY);
 	vector prob(NX);
 
     // set initial and boundary conditions
@@ -57,7 +55,7 @@ int main(int argc, char **argv)
     communication(matrix, NXlocal, NY, pid, nproc);
 
     // evolve and print
-    evolve(matrix, NXlocal, NY, NSTEPS, pid, nproc);
+    evolve(matrix, prob, NXlocal,NY, NSTEPS,Xmin,Ymin, DELTA,Np,u,pid, nproc);
     //print_screen(matrix, NXlocal, NY, pid, nproc);
 
     // close mpi environment
@@ -93,13 +91,13 @@ void cream_in_coffee(vector & data, int nx,int ny, int Npart,double DELTA, int p
     }
 }
 
-void evolve(vector & data, vector & prob, int Ng , int nx, int ny, int nsteps,double Xmin,double Ymin,
+void evolve(vector & data, vector & prob , int nx, int ny, int nsteps,double Xmin,double Ymin,
             double DELTA,int Np,int uint pid, int np)
 {
 	double s = 5;
 	if (u == 0){  //Create a Gif using Gnuplot
-    void start_gnuplot(Xmin,Ymin,N, pid,np);
-    print_gnuplot( data, nx, ny, Xmin,Ymin,DELTA,istep, pid, np);
+    start_gnuplot(Xmin,Ymin,ny, pid,np);
+    print_gnuplot( data, nx, ny, Xmin,Ymin,DELTA,0, pid, np);
     for(int istep = 1; istep <= nsteps; istep += 1) {
 
         entropy(data,nx, ny, istep, DELTA, pid,np);
