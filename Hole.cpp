@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	int lmin = -Xmin-(Npart/2);
 	int lmax = -Xmin+(Npart/2);
 	int Ng  = N/10;
-  int Np = Npart * Npart;
+    int Np = Npart * Npart;
 	int hole = 10;
     // declare data structures
   vector potential(N*N); 
@@ -57,7 +57,8 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	if (u == 0){  //Create a Gif using Gnuplot
     start_gnuplot(Xmin,Ymin);
     print_gnuplot(data, N, DELTA,Xmin,Ymin,0);
-		for(int istep = 1; istep < nsteps; istep += 1) {
+    for(int istep = 0; istep < nsteps; istep += 1) {
+    for(int istep = 1; istep < nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);   
 	if (Np == 0) {
 			exit (EXIT_FAILURE);
@@ -108,7 +109,6 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
         for(int iy = 0; iy < N; ++iy) {
             if (data[ix*N + iy] != 0.0){
                 double a = dis(gen);
-		    
                 //Move up
                 if (a < 1.0){
                     if(ix == 0){
@@ -133,17 +133,6 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
                     if(iy == N-1){
                         continue;
                         }
-			//
-			else if(ix == 0){
-			if (N/2-hole/2 <= iy && iy <= N/2+hole/2){
-				data[ix*N + iy] = 0.0;
-				Np -= 1;
-			}
-			else{
-                        continue;
-			}
-			}
-			//	
                     else if (data[ix*N + iy+1] == 0.0){
                             data[ix*N + iy] = 0.0;
                             data[ix*N + iy+1] = DELTA;
@@ -157,17 +146,6 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
                     if(iy == 0){
                         continue;
                         }
-			//
-			else if(ix == 0){
-			if (N/2-hole/2 <= iy && iy <= N/2+hole/2){
-				data[ix*N + iy] = 0.0;
-				Np -= 1;
-			}
-			else{
-                        continue;
-			}	
-			}
-			//
                     else if (data[ix*N + iy-1] == 0.0){
                             data[ix*N + iy] = 0.0;
                             data[ix*N + iy-1] = DELTA;
@@ -181,17 +159,6 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
                     if(ix == N-1){
                         continue;
                         }
-			//
-			else if(ix == 0){
-			if (N/2-hole/2 <= iy && iy <= N/2+hole/2){
-				data[ix*N + iy] = 0.0;
-				Np -= 1;
-			}
-			else{
-                        continue;
-			}	
-			}
-			//
                     else if (data[(ix+1)*N + iy] == 0.0){
                         data[ix*N + iy] = 0.0;
                         data[(ix+1)*N + iy] = DELTA;
