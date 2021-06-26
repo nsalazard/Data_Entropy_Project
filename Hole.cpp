@@ -63,7 +63,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 			exit (EXIT_FAILURE);
 		}
 	if (istep <= 15800){
-        if (istep%10 == 0) {
+        if (istep%100 == 0) {
 		   print_gnuplot(data, N, DELTA,Xmin,Ymin,istep);
     		}
 	}
