@@ -100,12 +100,14 @@ void evolve(vector & data, vector & prob , int nx, int ny, int nsteps,double Xmi
     for(int istep = 1; istep <= nsteps; istep += 1) {
 
         entropy(data,nx, ny, istep, DELTA, pid,np);
+	communication(data, nx, ny, pid, np);
 
 	if (istep%100 == 0) {
         print_gnuplot( data, nx, ny, Xmin,Ymin,DELTA,istep, pid, np);
 			}
     }
 	}
+	
     /*
 	if (u == 1){  //Print the entropy
     //print_screen(data, N);
