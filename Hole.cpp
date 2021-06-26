@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	int lmin = -Xmin-(Npart/2);
 	int lmax = -Xmin+(Npart/2);
 	int Ng  = N/10;
-    int Np = Npart * Npart;
+  int Np = Npart * Npart;
 	int hole = 10;
     // declare data structures
   vector potential(N*N); 
@@ -57,9 +57,9 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	if (u == 0){  //Create a Gif using Gnuplot
     start_gnuplot(Xmin,Ymin);
     print_gnuplot(data, N, DELTA,Xmin,Ymin,0);
-    for(int istep = 1; istep < nsteps; istep += 1) {
+		for(int istep = 1; istep < nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);   
-	if (Np <= 0) {
+	if (Np == 0) {
 			exit (EXIT_FAILURE);
 		}
 	if (istep <= 15800){
@@ -80,7 +80,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
     for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);
         //print_screen(data, N);
-	if (Np <= 0) {
+	if (Np == 0) {
 		exit (EXIT_FAILURE);
 	}
         if (istep%100 == 0) {
@@ -94,7 +94,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	std::cout << 0 << "\t" << Np << std::endl;
     	for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA, hole,Np);
-	if (Np <= 0) {
+	if (Np == 0) {
 		exit (EXIT_FAILURE);
 	}
 	std::cout << istep << "\t" <<  Np << std::endl;
@@ -109,7 +109,7 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
             if (data[ix*N + iy] != 0.0){
                 double a = dis(gen);
                 //Move up
-                 if (a < 1.0){
+                if (a < 1.0){
                     if(ix == 0){
 			if (N/2-hole/2 <= iy && iy <= N/2+hole/2){
 				data[ix*N + iy] = 0.0;
