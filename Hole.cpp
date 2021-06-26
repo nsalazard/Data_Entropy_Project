@@ -62,7 +62,7 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	if (Np <= 0) {
 			exit (EXIT_FAILURE);
 		}
-	if (istep <= 920){
+	if (istep <= 15800){
         if (istep%10 == 0) {
 		   print_gnuplot(data, N, DELTA,Xmin,Ymin,istep);
     		}
@@ -166,10 +166,6 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
                         continue;
                     }
                 }
-		    		if (ix == 0 && N/2-hole/2 <= iy && iy <= N/2+hole/2){
-			data[ix*N + iy] = 0.0;
-			Np -= 1;
-			}
             }
             else {
                 continue;
