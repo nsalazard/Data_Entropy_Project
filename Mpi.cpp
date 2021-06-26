@@ -291,7 +291,7 @@ void print_gnuplot(const vector & data, int nx, int ny,double Xmin,double Ymin, 
     int tag = 0;
     if (0 == pid) {
         std::cout << "plot '-' w p ls 3  t '"<< istep <<"' \n";
-        print_gnuplot_slice(&data[ny], nx-2, ny, pid, np);
+	print_gnuplot_slice(&data[ny], nx-2, ny, Xmin,Ymin,DELTA, pid, np);
         std::vector<double> buffer(nx*ny);
         for (int src = 1; src < np; ++src) {
             MPI_Recv(&buffer[0], nx*ny, MPI_DOUBLE, src, tag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
