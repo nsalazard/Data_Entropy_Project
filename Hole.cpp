@@ -83,10 +83,16 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	if (Np == 0) {
 		exit (EXIT_FAILURE);
 	}
+
+			if (istep <= 15800){
         if (istep%100 == 0) {
-		  	std::cout << istep << "\t" << grid(data,prob,Ng , N, Np) << std::endl;
+		   std::cout << istep << "\t" << grid(data,prob,Ng , N, Np) << std::endl;
 		  	initial_conditions(prob, Ng );
     		}
+	}
+	else {
+        print_gnuplot(data, N, DELTA,Xmin,Ymin,istep);
+	}
 	}
 	}
 	else{
@@ -106,12 +112,19 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
     std::uniform_real_distribution<double> dis(0, 4.0);
     for(int ix = 0; ix < N; ++ix) {
         for(int iy = 0; iy < N; ++iy) {
-            if (data[ix*N + iy] != 0.0){
+							if (data[ix*N + iy] != 0.0){
+
+								if((ix == 0) && (N/2-hole/2 <= iy) && (iy <= N/2+hole/2)){
+									data[ix*N + iy] = 0.0;
+									Np -= 1;
+									continue;
+									}
+
                 double a = dis(gen);
                 //Move up
                 if (a < 1.0){
                     if(ix == 0){
-			if (N/2-hole/2 <= iy && iy <= N/2+hole/2){
+			if ((N/2-hole/2 <= iy) && (iy <= N/2+hole/2)){
 				data[ix*N + iy] = 0.0;
 				Np -= 1;
 			}
@@ -132,6 +145,7 @@ void entropy(vector & data, int N,int b, double DELTA,int hole,int &Np){
                     if(iy == N-1){
                         continue;
                         }
+
                     else if (data[ix*N + iy+1] == 0.0){
                             data[ix*N + iy] = 0.0;
                             data[ix*N + iy+1] = DELTA;
