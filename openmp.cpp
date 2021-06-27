@@ -47,6 +47,7 @@ int main(int argc, char **argv)
 }
 void initial_conditions(vector & data, int N)
 {
+#pragma omp parallel for
     for(int ix = 0; ix < N; ++ix) {
         for(int iy = 0; iy < N; ++iy) {
             data[ix*N + iy] = 0.0;
@@ -55,6 +56,7 @@ void initial_conditions(vector & data, int N)
 }
 void cream_in_coffee(vector & data, int N,int lmin, int lmax,double DELTA)
 {
+#pragma omp parallel for
     for(int ix = lmin; ix < lmax; ++ix) {
         for(int iy = lmin; iy < lmax; ++iy) {
         data[ix*N + iy] = DELTA;
@@ -243,6 +245,7 @@ void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double 
 double spread(vector & data, int N, double DELTA, double Xmin,double Ymin, int istep, int Np)
 {
 	double r = 0.0;
+#pragma omp parallel for
     for(int ix = 0; ix < N; ++ix) {
         double x =  Xmin + ix*DELTA;
         for(int iy = 0; iy < N; ++iy) {
