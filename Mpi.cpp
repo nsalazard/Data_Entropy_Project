@@ -144,12 +144,13 @@ void evolve(vector & data, vector & prob , int nx, int ny, int nsteps,double Xmi
 void entropy(vector & data, int nx, int ny,int b, double DELTA,int pid, int np){
 	std::mt19937 gen(b);
     std::uniform_real_distribution<double> dis(0, 4.0);
+	double a = 0.0;
     for(int ix = 1; ix <= nx-2; ++ix) {
-        for(int iy = 1; iy < ny; ++iy) {
+        for(int iy = 0; iy < ny; ++iy) {
             if (data[ix*ny + iy] != 0.0){
                 if (0 == pid and 1 == ix) continue;
                 if (np-1 == pid and nx-2 == ix) continue;
-                double a = dis(gen);
+                a = dis(gen);
                 //Move up
                 if (a < 1.0){
                     if(ix == 1){
