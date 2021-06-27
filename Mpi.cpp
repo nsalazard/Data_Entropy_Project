@@ -281,7 +281,7 @@ void print_gnuplot_slice(const double * data, int nx, int ny,double Xmin,double 
     for(int ix = 0; ix < nx; ++ix) {
         double x = Xmin + ix*DELTA;
         for(int iy = 0; iy < ny; ++iy) {
-            if (data[ix*N + iy] != 0.0){
+            if (data[ix*ny + iy] != 0.0){
             double y = Ymin + iy*DELTA;
             std::cout << x << "\t" << y << "\n";
         }
