@@ -279,10 +279,12 @@ void start_gnuplot(double Xmin,double Ymin,int N,int pid, int np)
 void print_gnuplot_slice(const double * data, int nx, int ny,double Xmin,double Ymin,double DELTA, int pid, int np)
 {
     for(int ix = 0; ix < nx; ++ix) {
-        double x = pid*DELTA*nx + Xmin + ix*DELTA;
+        double x = Xmin + ix*DELTA;
         for(int iy = 0; iy < ny; ++iy) {
+            if (data[ix*N + iy] != 0.0){
             double y = Ymin + iy*DELTA;
-            std::cout << x << "  " << y << "  " << data[ix*ny + iy] << "\n";
+            std::cout << x << "\t" << y << "\n";
+        }
         }
         std::cout << "\n";
     }
