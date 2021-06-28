@@ -97,7 +97,6 @@ void evolve(vector &data, vector &prob, int Ng, int N, int nsteps, double Xmin,
     for (int istep = 1; istep <= nsteps; istep += 1) {
       entropy(data, N, istep, DELTA);
       r = spread(data, N, DELTA, Xmin, Ymin, istep, Np);
-                r= 0;
       // print_screen(data, N);
       if (istep % 100 == 0) {
         std::cout << istep << "\t" << r << std::endl;
@@ -240,5 +239,5 @@ double spread(vector &data, int N, double DELTA, double Xmin, double Ymin,
       }
     }
   }
-  return std::sqrt(r / Np);
+  return std::sqrt(r)/Np;
 }
