@@ -69,7 +69,7 @@ void evolve(vector &data, vector &prob, int Ng, int N, int nsteps, double Xmin,
     for (int istep = 1; istep <= nsteps; istep += 1) {
       entropy(data, N, istep, DELTA);
       if (istep >= 16000) {
-      if (istep % 100 == 0) {
+      if (istep % 1000 == 0) {
         print_gnuplot(data, N, DELTA, Xmin, Ymin, istep);
       }
       }
