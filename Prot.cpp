@@ -233,11 +233,11 @@ double spread(vector &data, int N, double DELTA, double Xmin, double Ymin,
     for (int iy = 0; iy < N; ++iy) {
       if (data[ix * N + iy] != 0.0) {
         double y = Ymin + iy * DELTA;
-        r += (x * x) + (y * y);
+        r += std::sqrt((x * x) + (y * y));
       } else {
         continue;
       }
     }
   }
-  return std::sqrt(r/Np);
+  return r/Np;
 }
