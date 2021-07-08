@@ -46,10 +46,19 @@ int main(int argc, char **argv)
   evolve(matrix,prob,Ng , N, NSTEPS, Xmin, Ymin, DELTA,Np,u);
   return 0;
 }
+void initial_conditions(vector &data, int N) {
+#pragma omp parallel for
+  for (int ix = 0; ix < N; ++ix) {
+    for (int iy = 0; iy < N; ++iy) {
+      data[ix * N + iy] = 0.0;
+    }
+  }
+}
+/*
 void initial_conditions(vector & data, int N)
 {
-  MPI_Init(); /* Mandatory */
-  int pid;                 /* rank of process */
+  MPI_Init(); 
+  int pid;                
   int np; 
   MPI_Comm_size(MPI_COMM_WORLD, &np);
   MPI_Comm_rank(MPI_COMM_WORLD, &pid);
@@ -64,6 +73,7 @@ int imax = (pid+1)*num;
     } 
    MPI_Finalize();
 }
+*/
 void cream_in_coffee(vector & data, int N,int lmin, int lmax,double DELTA)
 {
 #pragma omp parallel for
@@ -88,14 +98,14 @@ void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin
 	}
 	if (u == 1){  //Print the entropy
     //print_screen(data, N);
-    std::cout << 0 << "\t" << grid(data,prob,Ng , N, Np) << std::endl;
+    std::cout << 0 << "\t" << grid(data,prob, N, Np) << std::endl;
     initial_conditions(prob, Ng );
     double a = 0;
     for(int istep = 1; istep <= nsteps; istep += 1) {
         entropy(data, N,istep, DELTA);
         //print_screen(data, N);
         if (istep%100 == 0) {
-		  	std::cout << istep << "\t" << grid(data,prob,Ng , N, Np) << std::endl;
+		  	std::cout << istep << "\t" << grid(data,prob,N, Np) << std::endl;
 		  	initial_conditions(prob, Ng );
     		}
 			}
@@ -195,7 +205,7 @@ void entropy(vector & data, int N,int b, double DELTA){
 double grid(vector & data, vector & prob, int N,int Np){	
   double total = 0;
   double mean = 0;
-  MPI_Init(); /* Mandatory */
+  int MPI_Init(int *argc, char ***argv);/* Mandatory */
   int pid;                 /* rank of process */
   int np; 
   MPI_Comm_size(MPI_COMM_WORLD, &np);
