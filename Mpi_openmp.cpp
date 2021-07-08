@@ -32,7 +32,7 @@ int main(int argc, char **argv)
   	int Np = Npart * Npart;
     // declare data structures
   	vector matrix(N*N); 
-	vector prob(Ng *Ng );
+	vector prob;
     // set initial and boundary conditions
   	initial_conditions(matrix, N);
 	if (u == 3){
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 }
 void initial_conditions(vector & data, int N)
 {
-  MPI_Init(&argc, &argv); /* Mandatory */
+  MPI_Init(); /* Mandatory */
   int pid;                 /* rank of process */
   int np; 
   MPI_Comm_size(MPI_COMM_WORLD, &np);
@@ -195,7 +195,7 @@ void entropy(vector & data, int N,int b, double DELTA){
 double grid(vector & data, vector & prob, int N,int Np){	
   double total = 0;
   double mean = 0;
-  MPI_Init(&argc, &argv); /* Mandatory */
+  MPI_Init(); /* Mandatory */
   int pid;                 /* rank of process */
   int np; 
   MPI_Comm_size(MPI_COMM_WORLD, &np);
@@ -204,6 +204,7 @@ double grid(vector & data, vector & prob, int N,int Np){
     int num = N/np;  
     int imin = pid*num;
     int imax = (pid+1)*num;
+    prob.resize(num);
 #pragma omp parallel for	
 	for(int ix = imin; ix <= imax; ++ix) {
         for(int iy = 0; iy < N; ++iy) {
