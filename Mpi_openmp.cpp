@@ -203,8 +203,8 @@ void entropy(vector & data, int N,int b, double DELTA){
     }
 }	
 double grid(vector & data, vector & prob, int N,int Np){	
-  double total = 0;
-  double mean = 0;
+  double total = 0.0;
+  double mean = 0.0;
   int MPI_Init(int *argc, char ***argv);/* Mandatory */
   int pid;                 /* rank of process */
   int np; 
