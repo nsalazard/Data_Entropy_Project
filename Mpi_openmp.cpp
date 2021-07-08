@@ -3,6 +3,7 @@
 #include <random>
 #include <cmath>
 #include <omp.h>
+#include "mpi.h"
 
 typedef std::vector<double> vector;
 
