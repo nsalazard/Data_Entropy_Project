@@ -213,7 +213,7 @@ double grid(vector & data, vector & prob, int N,int Np){
          prob[kk] = prob[kk]/(Np);
          kk += 1;   
 	} 
-	for(int kk=0; kk< nx-2; ++kk){
+	for(int kk=0; kk< num; ++kk){
 		if (prob[kk] != 0){
 		mean +=  prob[kk] * - std::log(prob[kk]) ; 
 		}
