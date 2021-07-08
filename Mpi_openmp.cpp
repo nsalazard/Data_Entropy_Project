@@ -10,7 +10,7 @@ void initial_conditions(vector & data, int N);
 void cream_in_coffee(vector & data, int N,int lmin, int lmax,double DELTA);
 void evolve(vector & data, vector & prob, int Ng , int N, int nsteps,double Xmin,double Ymin,double DELTA,int Np,int u);
 void entropy(vector & data, int N,int b, double DELTA);
-double grid(vector & data, vector & prob, int Ng , int N,int Np);
+double grid(vector & data, vector & prob, int N,int Np);
 void print_screen(const vector & data, int N);
 void start_gnuplot(double Xmin,double Ymin,int N);
 void print_gnuplot(const vector & data, int N, double DELTA, double Xmin,double Ymin, int istep);
@@ -45,8 +45,13 @@ int main(int argc, char **argv)
   evolve(matrix,prob,Ng , N, NSTEPS, Xmin, Ymin, DELTA,Np,u);
   return 0;
 }
-void initial_conditions(vector & data, int N, int pid, int np)
+void initial_conditions(vector & data, int N)
 {
+  MPI_Init(&argc, &argv); /* Mandatory */
+  int pid;                 /* rank of process */
+  int np; 
+  MPI_Comm_size(MPI_COMM_WORLD, &np);
+  MPI_Comm_rank(MPI_COMM_WORLD, &pid);
 int num = N/np;  
 int imin = pid*num;
 int imax = (pid+1)*num;
@@ -56,6 +61,7 @@ int imax = (pid+1)*num;
             data[ix*N + iy] = 0.0;
         }
     } 
+   MPI_Finalize();
 }
 void cream_in_coffee(vector & data, int N,int lmin, int lmax,double DELTA)
 {
