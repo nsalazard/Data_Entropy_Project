@@ -103,6 +103,35 @@ void evolve(vector &data, vector &prob, int Ng, int N, int nsteps, double Xmin,
       }
     }
   }
+            
+   else if (u == 4) { // Test the entropy
+    vector test(4);
+    test[0] = grid(data, prob, Ng, N, Np);
+    std::cout << 0 << "\t" << E_0 << std::endl;
+    initial_conditions(prob, Ng);
+    for (int istep = 1; istep <= 1000; istep += 1) {
+      entropy(data, N, istep, DELTA);
+      if (istep == 100) {
+        test[1] = grid(data, prob, Ng, N, Np);
+        initial_conditions(prob, Ng);
+      }
+      if (istep == 500) {
+        test[2] = grid(data, prob, Ng, N, Np);
+        initial_conditions(prob, Ng);
+      }
+      if (istep == 1000) {
+        test[3] = grid(data, prob, Ng, N, Np);
+        initial_conditions(prob, Ng);
+      }
+    }
+    for (int ii = 1; ii <= 3; ii += 1) {
+      if (test[ii-1] <= test[ii] ){
+        std::cout << "The test has been passed" << std::endl;
+      }
+      else {
+        std::cout << "Something has gone wrong, please check it" << std::endl;
+      }
+    }
 }
 
 void entropy(vector &data, int N, int b, double DELTA) {
